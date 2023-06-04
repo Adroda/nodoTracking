@@ -55,7 +55,7 @@ public class GetTrackingService {
       LocalDateTime date = LocalDateTime.now();
       String strDate = date.format(dateTimeFormatter);
     
-      TrackingDTO t1 = new TrackingDTO(1L, "ab1234", "uy", "-34.184542", "-55.002278", "2023-05-18T19:54:00.000Z");
+      TrackingDTO t1 = new TrackingDTO(1L, "ab1234", "uy", "-34.184542", "-55.002278", "2023-05-18 19:54");
       TrackingDTO t2 = new TrackingDTO(2L, "bc1234", "uy","-34.184542", "-55.002278", "2023-05-18 19:54");
       TrackingDTO t3 = new TrackingDTO(3L, "cd1234", "uy","-34.184542", "-55.002278", "2023-05-18 19:54");
       //logger.info("tracking : " + t1.getTimestamp()); ACA ESTAMOS BIEN
@@ -66,7 +66,7 @@ public class GetTrackingService {
   
       ObjectMapper objectMapper = new ObjectMapper();
       String requestBody = objectMapper.writeValueAsString(list);
-      HttpPost request = new HttpPost("http://localhost:8080/CargaUy-web/rest/tracking/trackings");
+      HttpPost request = new HttpPost("http://localhost:8080/CargaUy-web/api/tracking/trackings");
       request.setEntity(new StringEntity(requestBody, ContentType.APPLICATION_JSON));
       HttpResponse response = hc.execute(request);
     }
