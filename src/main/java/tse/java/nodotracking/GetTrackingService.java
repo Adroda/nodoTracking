@@ -1,13 +1,9 @@
 package tse.java.nodotracking;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -19,14 +15,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -46,7 +40,6 @@ public class GetTrackingService {
     LocalDateTime fechaFinParseada = LocalDateTime.parse(fechaFin,dateTimeFormatter);
 
 
-    //LocalDateTime fechaInicioCasteada = LocalDateTime.of(fechaInicio);
     List<TrackingDTO> list = new ArrayList<TrackingDTO>();
 
     if(m1.equals(matricula) && p1.equals(pais)  && fi1.isBefore(fechaInicioParseada) && ff1.isAfter(fechaFinParseada)){
@@ -55,10 +48,9 @@ public class GetTrackingService {
       LocalDateTime date = LocalDateTime.now();
       String strDate = date.format(dateTimeFormatter);
     
-      TrackingDTO t1 = new TrackingDTO(1L, "ab1234", "uy", "-34.184542", "-55.002278", "2023-05-18 19:54");
-      TrackingDTO t2 = new TrackingDTO(2L, "bc1234", "uy","-34.184542", "-55.002278", "2023-05-18 19:54");
-      TrackingDTO t3 = new TrackingDTO(3L, "cd1234", "uy","-34.184542", "-55.002278", "2023-05-18 19:54");
-      //logger.info("tracking : " + t1.getTimestamp()); ACA ESTAMOS BIEN
+      TrackingDTO t1 = new TrackingDTO(1L, "SDE5687", "Uruguay", "-34.184542", "-55.002278", "2023-05-18 19:54");
+      TrackingDTO t2 = new TrackingDTO(2L, "SDF1254", "Uruguay","-34.184542", "-55.002278", "2023-05-18 19:54");
+      TrackingDTO t3 = new TrackingDTO(3L, "SDF2112", "Uruguay","-34.184542", "-55.002278", "2023-05-18 19:54");
       
       list.add(t1);
       list.add(t2);
