@@ -52,8 +52,8 @@ public class GetTrackingService {
       String strDate = date.format(dateTimeFormatter);
     
       TrackingDTO t1 = new TrackingDTO(1L, "SDE5687", "Uruguay", "-34.184542", "-55.002278", "2023-07-18 19:54");
-      TrackingDTO t2 = new TrackingDTO(2L, "SDF1254", "Uruguay","-34.184542", "-55.002278", "2023-07-18 19:54");
-      TrackingDTO t3 = new TrackingDTO(3L, "SDF2112", "Uruguay","-34.184542", "-55.002278", "2023-07-18 19:54");
+      TrackingDTO t2 = new TrackingDTO(2L, "SDE5687", "Uruguay","-33.184542", "-56.002278", "2023-07-17 19:54");
+      TrackingDTO t3 = new TrackingDTO(3L, "SDE5687", "Uruguay","-32.184542", "-57.002278", "2023-07-16 19:54");
       
       list.add(t1);
       list.add(t2);
