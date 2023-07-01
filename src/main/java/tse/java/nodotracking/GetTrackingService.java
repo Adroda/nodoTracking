@@ -30,8 +30,8 @@ public class GetTrackingService {
   
   @GetMapping(path = "/listaTrackings")
   public @ResponseBody List<TrackingDTO> listarTrackings(@RequestParam String matricula,@RequestParam String pais, @RequestParam String fechaInicio, @RequestParam String fechaFin) throws ClientProtocolException, IOException{
-    String m1 = "ab1234";
-    String p1 = "uy";
+    String m1 = "SDE5687";
+    String p1 = "Uruguay";
     LocalDateTime fi1 = LocalDateTime.now();
     LocalDateTime ff1 = LocalDateTime.of(2023, 7, 29, 1 ,1 ,1, 1);
     
@@ -41,16 +41,19 @@ public class GetTrackingService {
 
 
     List<TrackingDTO> list = new ArrayList<TrackingDTO>();
+    System.out.println(fi1.isBefore(fechaInicioParseada));
+    System.out.println(fi1);
+    System.out.println(fechaInicioParseada);
 
-    if(m1.equals(matricula) && p1.equals(pais)  && fi1.isBefore(fechaInicioParseada) && ff1.isAfter(fechaFinParseada)){
+    if(m1.equals(matricula) && p1.equals(pais) && fi1.isBefore(fechaInicioParseada) && ff1.isAfter(fechaFinParseada)){
       CloseableHttpClient hc = HttpClientBuilder.create().build();
     
       LocalDateTime date = LocalDateTime.now();
       String strDate = date.format(dateTimeFormatter);
     
-      TrackingDTO t1 = new TrackingDTO(1L, "SDE5687", "Uruguay", "-34.184542", "-55.002278", "2023-05-18 19:54");
-      TrackingDTO t2 = new TrackingDTO(2L, "SDF1254", "Uruguay","-34.184542", "-55.002278", "2023-05-18 19:54");
-      TrackingDTO t3 = new TrackingDTO(3L, "SDF2112", "Uruguay","-34.184542", "-55.002278", "2023-05-18 19:54");
+      TrackingDTO t1 = new TrackingDTO(1L, "SDE5687", "Uruguay", "-34.184542", "-55.002278", "2023-07-18 19:54");
+      TrackingDTO t2 = new TrackingDTO(2L, "SDF1254", "Uruguay","-34.184542", "-55.002278", "2023-07-18 19:54");
+      TrackingDTO t3 = new TrackingDTO(3L, "SDF2112", "Uruguay","-34.184542", "-55.002278", "2023-07-18 19:54");
       
       list.add(t1);
       list.add(t2);
