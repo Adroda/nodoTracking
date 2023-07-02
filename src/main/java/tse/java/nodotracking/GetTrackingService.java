@@ -63,7 +63,7 @@ public class GetTrackingService {
   
       ObjectMapper objectMapper = new ObjectMapper();
       String requestBody = objectMapper.writeValueAsString(list);
-      HttpPost request = new HttpPost("http://localhost:8080/CargaUy-web/api/tracking/trackings");
+      HttpPost request = new HttpPost("http://carga-uy-13.web.elasticloud.uy/CargaUy-web/api/tracking/trackings");
       request.setEntity(new StringEntity(requestBody, ContentType.APPLICATION_JSON));
       HttpResponse response = hc.execute(request);
     }
