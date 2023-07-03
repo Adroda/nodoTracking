@@ -30,6 +30,7 @@ public class GetTrackingService {
   
   @GetMapping(path = "/listaTrackings")
   public @ResponseBody List<TrackingDTO> listarTrackings(@RequestParam String matricula,@RequestParam String pais, @RequestParam String fechaInicio, @RequestParam String fechaFin) throws ClientProtocolException, IOException{
+    logger.info("Me invocaron con los parametros matricula: " + matricula + " pais:" + pais + " fechaInicio: " + fechaInicio + " fechaFin: " + fechaFin);
     LocalDateTime fi1 = LocalDateTime.now();
     LocalDateTime ff1 = LocalDateTime.of(2023, 7, 29, 1 ,1 ,1, 1);
     
@@ -48,6 +49,7 @@ public class GetTrackingService {
     System.out.println(fechaInicioParseada);
 
     if(matriculas.contains(matricula) && p1.equals(pais) && fi1.isBefore(fechaInicioParseada) && ff1.isAfter(fechaFinParseada)){
+      logger.info("Los parametros son validos, retorno los trackings registrados");
       CloseableHttpClient hc = HttpClientBuilder.create().build();
     
       LocalDateTime date = LocalDateTime.now();
@@ -66,6 +68,8 @@ public class GetTrackingService {
       HttpPost request = new HttpPost("http://carga-uy-13.web.elasticloud.uy/CargaUy-web/api/tracking/trackings");
       request.setEntity(new StringEntity(requestBody, ContentType.APPLICATION_JSON));
       HttpResponse response = hc.execute(request);
+    } else {
+        logger.info("Los parametros ingresados son INvalidos");
     }
     return list;    
   }
